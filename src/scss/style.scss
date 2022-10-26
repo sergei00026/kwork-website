@@ -138,17 +138,20 @@ body {
 
 // Подключение стилей отдельных страниц
 @import "home";
+@import "movement";
 //======================================
 .crumbs {
 	padding-top: 20px;
-
+	&:not(:last-child) {
+		margin-bottom: 20px;
+	}
 	&__container {
+	}
+
+	&__list {
 		display: flex;
 		align-items: center;
 		column-gap: 7px;
-	}
-	&:not(:last-child) {
-		margin-bottom: 20px;
 	}
 	// .crumbs__item
 	&__item {
@@ -276,6 +279,9 @@ body {
 }
 // ============================================
 .module-1 {
+	&:not(:last-child) {
+		margin-bottom: 20px;
+	}
 	// .module-1__container
 	&__container {
 	}
@@ -287,302 +293,3 @@ body {
 	&__body {
 	}
 }
-.title {
-	font-size: 20px;
-	font-weight: 500;
-}
-.module-1 {
-	// .module-1__body
-	&__body {
-	}
-}
-.modules {
-	text-align: center;
-	width: 966px;
-	overflow: auto;
-	// .modules__titles
-	&__titles {
-		display: grid;
-		grid-template-columns: repeat(8, 1fr);
-		font-weight: 700;
-		background-color: rgba(51, 51, 51, 0.1);
-		align-items: center;
-		& > div {
-			min-height: 37.5px;
-			padding: 8px;
-			border: solid #ddd;
-			border-width: 1px 1px 1px 0;
-			&:first-child {
-				border: 1px solid #ddd;
-			}
-		}
-		// .modules__titles_inf1
-		&_inf1 {
-		}
-		// .modules__titles_inf2
-		&_inf2 {
-		}
-		// .modules__titles_inf3
-		&_inf3 {
-		}
-		// .modules__titles_inf4
-		&_inf4 {
-		}
-		// .modules__titles_inf5
-		&_inf5 {
-		}
-		// .modules__titles_inf6
-		&_inf6 {
-		}
-		// .modules__titles_inf7
-		&_inf7 {
-		}
-		// .modules__titles_more
-		&_more {
-		}
-	}
-	// .modules__items
-	&__items {
-		display: grid;
-		grid-template-columns: repeat(8, 1fr);
-		& > div {
-			min-height: 51.5px;
-			padding: 8px;
-			border: solid #ddd;
-			border-width: 0px 1px 1px 0;
-			&:first-child {
-				border: solid #ddd;
-				border-width: 0px 1px 1px 1px;
-			}
-		}
-		transition: all 0.3s ease 0s;
-		&:hover {
-			background-color: #f5f5f5;
-		}
-		// .modules__items_inf
-		&_inf {
-		}
-		// .modules__items_inf
-		&_inf {
-		}
-		// .modules__items_inf
-		&_inf {
-		}
-		// .modules__items_inf
-		&_inf {
-		}
-		// .modules__items_inf
-		&_inf {
-		}
-		// .modules__items_inf
-		&_inf {
-		}
-		// .modules__items_inf
-		&_inf {
-		}
-		// .modules__items_more
-		&_more {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-	}
-	// .modules__link
-	&__link {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 40px;
-		height: 34px;
-		color: #fff;
-		background-color: #5bc0de;
-		border-color: #46b8da;
-	}
-}
-
-/*
-.modules {
-	display: grid;
-	text-align: center;
-
-
-	
-	// .modules__inf-1
-	&__inf-1 {
-		// .modules__inf-1_title
-		&_title {
-			border: solid #ddd;
-			border-width: 1px;
-			min-height: 37.5px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			padding: 8px;
-			font-weight: 700;
-			background-color: rgba(51, 51, 51, 0.1);
-		}
-		// .modules__inf-1_date
-		&_date {
-			border: solid #ddd;
-			border-width: 0px 1px 1px 1px;
-			min-height: 51.5px;
-			padding: 8px;
-		}
-	}
-	// .modules__inf-2
-	&__inf-2 {
-		// .modules__inf-2_title
-		&_title {
-			border: solid #ddd;
-			border-width: 1px 1px 1px 0;
-			min-height: 37.5px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			padding: 8px;
-			font-weight: 700;
-			background-color: rgba(51, 51, 51, 0.1);
-		}
-		// .modules__inf-2_num
-		&_num {
-			border: solid #ddd;
-			border-width: 0px 1px 1px 0px;
-			min-height: 51.5px;
-			padding: 8px;
-		}
-	}
-	// .modules__inf-3
-	&__inf-3 {
-		// .modules__inf-3_title
-		&_title {
-			border: solid #ddd;
-			border-width: 1px 1px 1px 0;
-			min-height: 37.5px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			padding: 8px;
-			font-weight: 700;
-			background-color: rgba(51, 51, 51, 0.1);
-		}
-		// .modules__inf-3_num
-		&_num {
-			border: solid #ddd;
-			border-width: 0px 1px 1px 0px;
-			min-height: 51.5px;
-			padding: 8px;
-		}
-	}
-	// .modules__inf-4
-	&__inf-4 {
-		// .modules__inf-4_title
-		&_title {
-			border: solid #ddd;
-			border-width: 1px 1px 1px 0;
-			min-height: 37.5px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			padding: 8px;
-			font-weight: 700;
-			background-color: rgba(51, 51, 51, 0.1);
-		}
-		// .modules__inf-4_num
-		&_num {
-			border: solid #ddd;
-			border-width: 0px 1px 1px 0px;
-			min-height: 51.5px;
-			padding: 8px;
-		}
-	}
-	// .modules__inf-5
-	&__inf-5 {
-		// .modules__inf-5_title
-		&_title {
-			border: solid #ddd;
-			border-width: 1px 1px 1px 0;
-			min-height: 37.5px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			padding: 8px;
-			font-weight: 700;
-			background-color: rgba(51, 51, 51, 0.1);
-		}
-		// .modules__inf-5_num
-		&_num {
-			border: solid #ddd;
-			border-width: 0px 1px 1px 0px;
-			min-height: 51.5px;
-			padding: 8px;
-		}
-	}
-	// .modules__inf-6
-	&__inf-6 {
-		// .modules__inf-6_title
-		&_title {
-			border: solid #ddd;
-			border-width: 1px 1px 1px 0;
-			min-height: 37.5px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			padding: 8px;
-			font-weight: 700;
-			background-color: rgba(51, 51, 51, 0.1);
-		}
-		// .modules__inf-6_num
-		&_num {
-			border: solid #ddd;
-			border-width: 0px 1px 1px 0px;
-			min-height: 51.5px;
-			padding: 8px;
-		}
-	}
-	// .modules__inf-7
-	&__inf-7 {
-		// .modules__inf-7_title
-		&_title {
-			border: solid #ddd;
-			border-width: 1px 1px 1px 0;
-			min-height: 37.5px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			padding: 8px;
-			font-weight: 700;
-			background-color: rgba(51, 51, 51, 0.1);
-		}
-		// .modules__inf-7_num
-		&_num {
-			border: solid #ddd;
-			border-width: 0px 1px 1px 0px;
-			min-height: 51.5px;
-			padding: 8px;
-		}
-	}
-	// .modules__more
-	&__more {
-		// .modules__more_title
-		&_title {
-			border: solid #ddd;
-			border-width: 1px 1px 1px 0;
-			min-height: 37.5px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			padding: 8px;
-			font-weight: 700;
-			background-color: rgba(51, 51, 51, 0.1);
-		}
-		&_icon {
-			border: solid #ddd;
-			border-width: 0px 1px 1px 0px;
-			min-height: 51.5px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-	}
-}
-*/

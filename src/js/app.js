@@ -146,7 +146,7 @@ import './libs/select.js'
 Документация плагина: https://github.com/Grsmto/simplebar/tree/master/packages/simplebar
 Сниппет(HTML): 
 */
-// import './files/scroll/simplebar.js';
+import './files/scroll/simplebar.js';
 
 // Ленивая (отложенная) загрузка картинок
 // Документация по работе в шаблоне: https://template.fls.guru/template-docs/modul-lenivaya-podgruzka-lazy-loading.html
