@@ -1,0 +1,588 @@
+@use "sass:math";
+
+// Подключение миксинов ===========================================================================
+@import "base/mixins";
+
+// Подключение шрифтов ===========================================================================
+//&display=swap - добавить при подключении через плагин
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic&display=swap");
+
+// Подключить если есть локальные файлы шрифтов
+//@import "fonts/fonts";
+
+// Подключение иконочных шрифтов ============================================================================
+// Подключить если есть файл иконочного шрифта
+//@import "fonts/icons";
+
+// Шрифт по умолчанию ===========================================================================
+$fontFamily: "Roboto";
+$fontSize: rem(14); // где 14(px) - размер шрифта по умолчанию из макета
+
+// Основные цвета
+$mainColor: #555; // Цвет шрифта по умолчанию
+
+// Настройки адаптивной сетки ===========================================================================
+
+// Минимальная ширина страницы
+$minWidth: 320;
+// Ширина полотна (макета)
+$maxWidth: 1920;
+// Ширина ограничивающего контейнера (0 = нет ограничения)
+$maxWidthContainer: 1650;
+// Общий отступ у контейнера
+// (30 = по 15px слева и справа, 0 = нет отступа)
+$containerPadding: 30;
+
+// Ширина срабатывания первого брейкпоинта
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+// Брейк-поинты
+$pc: em($containerWidth); // ПК, ноутбуки, некоторые планшеты в горизонтальном положении
+$tablet: em(991.98); // Планшеты, некоторые телефоны в горизонтальном положении
+$mobile: em(767.98); // Телефоны L
+$mobileSmall: em(479.98); // Телефоны S
+
+// Тип адаптива:
+// 1 = отзывчивость (у контейнера нет брейкпоинтов),
+// 2 = по брейк-поинтам (контейнер меняет свою ширину по брейк-поинтам)
+$responsiveType: 1;
+
+// Обнуление ===========================================================================
+@import "base/null";
+
+// Стили тега BODY ===========================================================================
+
+body {
+	// Скролл заблокирован
+	.lock & {
+		overflow: hidden;
+		touch-action: none;
+	}
+	// Сайт загружен
+	.loaded & {
+	}
+}
+
+// Оболочка wrapper ===========================================================================
+.wrapper {
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	// Прижимаем footer
+	> main {
+		flex: 1 1 auto;
+	}
+	// Фикс для слайдеров
+	> * {
+		min-width: 0;
+	}
+}
+// Ограничивающий контейнер ===========================================================================
+
+/*
+(i) Стили будут применяться ко 
+всем классам содержащим *__container
+Например header__container, main__container и т.д.
+Снипет (HTML): cnt
+*/
+@if ($responsiveType==1) {
+	// Отзывчивая
+	[class*="__container"] {
+		@if ($maxWidthContainer>0) {
+			max-width: rem($maxWidthContainer);
+			box-sizing: content-box;
+			margin: 0 auto;
+		}
+		@if ($containerPadding>0) {
+			padding: 0 rem(math.div($containerPadding, 2));
+		}
+	}
+} @else {
+	// По брейк-поинтам
+	[class*="__container"] {
+		margin: 0 auto;
+		@if ($maxWidthContainer>0) {
+			max-width: rem($maxWidthContainer);
+			box-sizing: content-box;
+		} @else {
+			@if ($containerPadding>0) {
+				padding: 0 rem(math.div($containerPadding, 2));
+			}
+		}
+		@media (max-width: $pc) {
+			max-width: rem(970);
+		}
+		@media (max-width: $tablet) {
+			max-width: rem(750);
+		}
+		@media (max-width: $mobile) {
+			max-width: none;
+			@if ($containerPadding>0 and $maxWidthContainer>0) {
+				padding: 0 rem(math.div($containerPadding, 2));
+			}
+		}
+	}
+}
+
+// Подключение базовых стилей, шаблонов (заготовок) и вспомогательных  классов
+// Для подключения/отключения конкретных стилей смотри base.scss
+@import "base";
+
+// Подключение стилей общих элементов проекта
+@import "common";
+
+// Подключение стилей отдельных блоков
+@import "header";
+@import "footer";
+
+// Подключение стилей отдельных страниц
+@import "home";
+//======================================
+.crumbs {
+	padding-top: 20px;
+
+	&__container {
+		display: flex;
+		align-items: center;
+		column-gap: 7px;
+	}
+	&:not(:last-child) {
+		margin-bottom: 20px;
+	}
+	// .crumbs__item
+	&__item {
+		&_home {
+			font-size: 12px;
+		}
+		// .crumbs__item_arrow
+		&_arrow {
+			font-size: 10px;
+		}
+	}
+	// .crumbs__link
+	&__link {
+	}
+}
+
+//======================
+.filter {
+	&:not(:last-child) {
+		margin-bottom: 20px;
+	}
+	// .filter__container
+	&__container {
+	}
+	// .filter__spollers
+	&__spollers {
+	}
+	// .filter__spoller
+	&__spoller {
+	}
+	// .filter__title
+	&__title {
+		background-color: #ff3c20;
+		min-height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 5px 20px;
+		color: #fff;
+		font-size: 18px;
+		border-radius: 3px;
+	}
+	// .filter__body
+	&__body {
+		display: grid;
+		padding-top: 30px;
+		row-gap: 30px;
+		@media (min-width: $mobile) {
+			@include adaptiveValue("max-width", 950, 345);
+		}
+	}
+	// .filter__info
+	&__info {
+		border-radius: 3px;
+		border: 2px solid #000;
+		max-width: 400px;
+		&::placeholder {
+			color: #999;
+		}
+	}
+	// .filter__calendar--box
+	&__calendar--box {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+	}
+	// .filter__date--state
+	&__date--state {
+		border: 2px solid #000;
+		border-radius: 3px;
+	}
+	// .filter__date--end
+	&__date--end {
+		border: 2px solid #000;
+		border-radius: 3px;
+	}
+	// .filter__selects
+	&__selects {
+		display: grid;
+		gap: 10px;
+		align-items: center;
+		@media (min-width: em(550)) {
+			grid-template-columns: 0.6fr 0.3fr 0.3fr;
+		}
+	}
+	// .filter__select
+	&__select {
+	}
+	&__submits {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+	// .filter__submit
+	&__submit {
+		background-color: #ff3c20;
+		min-height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 5px 20px;
+		color: #fff;
+		font-size: 18px;
+		border-radius: 3px;
+	}
+	// .filter__reset
+	&__reset {
+		background-color: #ff3c20;
+		min-height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 5px 20px;
+		color: #fff;
+		font-size: 18px;
+		border-radius: 3px;
+	}
+	input {
+		min-height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 5px;
+	}
+}
+// ============================================
+.module-1 {
+	// .module-1__container
+	&__container {
+	}
+	// .module-1__title
+	&__title {
+		margin-bottom: 10px;
+	}
+	// .module-1__body
+	&__body {
+	}
+}
+.title {
+	font-size: 20px;
+	font-weight: 500;
+}
+.module-1 {
+	// .module-1__body
+	&__body {
+	}
+}
+.modules {
+	text-align: center;
+	width: 966px;
+	overflow: auto;
+	// .modules__titles
+	&__titles {
+		display: grid;
+		grid-template-columns: repeat(8, 1fr);
+		font-weight: 700;
+		background-color: rgba(51, 51, 51, 0.1);
+		align-items: center;
+		& > div {
+			min-height: 37.5px;
+			padding: 8px;
+			border: solid #ddd;
+			border-width: 1px 1px 1px 0;
+			&:first-child {
+				border: 1px solid #ddd;
+			}
+		}
+		// .modules__titles_inf1
+		&_inf1 {
+		}
+		// .modules__titles_inf2
+		&_inf2 {
+		}
+		// .modules__titles_inf3
+		&_inf3 {
+		}
+		// .modules__titles_inf4
+		&_inf4 {
+		}
+		// .modules__titles_inf5
+		&_inf5 {
+		}
+		// .modules__titles_inf6
+		&_inf6 {
+		}
+		// .modules__titles_inf7
+		&_inf7 {
+		}
+		// .modules__titles_more
+		&_more {
+		}
+	}
+	// .modules__items
+	&__items {
+		display: grid;
+		grid-template-columns: repeat(8, 1fr);
+		& > div {
+			min-height: 51.5px;
+			padding: 8px;
+			border: solid #ddd;
+			border-width: 0px 1px 1px 0;
+			&:first-child {
+				border: solid #ddd;
+				border-width: 0px 1px 1px 1px;
+			}
+		}
+		transition: all 0.3s ease 0s;
+		&:hover {
+			background-color: #f5f5f5;
+		}
+		// .modules__items_inf
+		&_inf {
+		}
+		// .modules__items_inf
+		&_inf {
+		}
+		// .modules__items_inf
+		&_inf {
+		}
+		// .modules__items_inf
+		&_inf {
+		}
+		// .modules__items_inf
+		&_inf {
+		}
+		// .modules__items_inf
+		&_inf {
+		}
+		// .modules__items_inf
+		&_inf {
+		}
+		// .modules__items_more
+		&_more {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+	// .modules__link
+	&__link {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 40px;
+		height: 34px;
+		color: #fff;
+		background-color: #5bc0de;
+		border-color: #46b8da;
+	}
+}
+
+/*
+.modules {
+	display: grid;
+	text-align: center;
+
+
+	
+	// .modules__inf-1
+	&__inf-1 {
+		// .modules__inf-1_title
+		&_title {
+			border: solid #ddd;
+			border-width: 1px;
+			min-height: 37.5px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 8px;
+			font-weight: 700;
+			background-color: rgba(51, 51, 51, 0.1);
+		}
+		// .modules__inf-1_date
+		&_date {
+			border: solid #ddd;
+			border-width: 0px 1px 1px 1px;
+			min-height: 51.5px;
+			padding: 8px;
+		}
+	}
+	// .modules__inf-2
+	&__inf-2 {
+		// .modules__inf-2_title
+		&_title {
+			border: solid #ddd;
+			border-width: 1px 1px 1px 0;
+			min-height: 37.5px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 8px;
+			font-weight: 700;
+			background-color: rgba(51, 51, 51, 0.1);
+		}
+		// .modules__inf-2_num
+		&_num {
+			border: solid #ddd;
+			border-width: 0px 1px 1px 0px;
+			min-height: 51.5px;
+			padding: 8px;
+		}
+	}
+	// .modules__inf-3
+	&__inf-3 {
+		// .modules__inf-3_title
+		&_title {
+			border: solid #ddd;
+			border-width: 1px 1px 1px 0;
+			min-height: 37.5px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 8px;
+			font-weight: 700;
+			background-color: rgba(51, 51, 51, 0.1);
+		}
+		// .modules__inf-3_num
+		&_num {
+			border: solid #ddd;
+			border-width: 0px 1px 1px 0px;
+			min-height: 51.5px;
+			padding: 8px;
+		}
+	}
+	// .modules__inf-4
+	&__inf-4 {
+		// .modules__inf-4_title
+		&_title {
+			border: solid #ddd;
+			border-width: 1px 1px 1px 0;
+			min-height: 37.5px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 8px;
+			font-weight: 700;
+			background-color: rgba(51, 51, 51, 0.1);
+		}
+		// .modules__inf-4_num
+		&_num {
+			border: solid #ddd;
+			border-width: 0px 1px 1px 0px;
+			min-height: 51.5px;
+			padding: 8px;
+		}
+	}
+	// .modules__inf-5
+	&__inf-5 {
+		// .modules__inf-5_title
+		&_title {
+			border: solid #ddd;
+			border-width: 1px 1px 1px 0;
+			min-height: 37.5px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 8px;
+			font-weight: 700;
+			background-color: rgba(51, 51, 51, 0.1);
+		}
+		// .modules__inf-5_num
+		&_num {
+			border: solid #ddd;
+			border-width: 0px 1px 1px 0px;
+			min-height: 51.5px;
+			padding: 8px;
+		}
+	}
+	// .modules__inf-6
+	&__inf-6 {
+		// .modules__inf-6_title
+		&_title {
+			border: solid #ddd;
+			border-width: 1px 1px 1px 0;
+			min-height: 37.5px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 8px;
+			font-weight: 700;
+			background-color: rgba(51, 51, 51, 0.1);
+		}
+		// .modules__inf-6_num
+		&_num {
+			border: solid #ddd;
+			border-width: 0px 1px 1px 0px;
+			min-height: 51.5px;
+			padding: 8px;
+		}
+	}
+	// .modules__inf-7
+	&__inf-7 {
+		// .modules__inf-7_title
+		&_title {
+			border: solid #ddd;
+			border-width: 1px 1px 1px 0;
+			min-height: 37.5px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 8px;
+			font-weight: 700;
+			background-color: rgba(51, 51, 51, 0.1);
+		}
+		// .modules__inf-7_num
+		&_num {
+			border: solid #ddd;
+			border-width: 0px 1px 1px 0px;
+			min-height: 51.5px;
+			padding: 8px;
+		}
+	}
+	// .modules__more
+	&__more {
+		// .modules__more_title
+		&_title {
+			border: solid #ddd;
+			border-width: 1px 1px 1px 0;
+			min-height: 37.5px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 8px;
+			font-weight: 700;
+			background-color: rgba(51, 51, 51, 0.1);
+		}
+		&_icon {
+			border: solid #ddd;
+			border-width: 0px 1px 1px 0px;
+			min-height: 51.5px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+}
+*/
