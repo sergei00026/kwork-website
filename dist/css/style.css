@@ -538,7 +538,6 @@ input:focus {
 
 .modules {
   text-align: center;
-  max-width: 985px;
   overflow-x: auto;
   min-width: 0;
 }
@@ -700,7 +699,6 @@ input:focus {
 }
 
 .paginator__list {
-  max-width: 966px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -746,6 +744,20 @@ input:focus {
   border: 1px solid #000;
   width: 25px;
   height: 25px;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.paginator__link:hover {
+  -webkit-box-shadow: 1px 1px 3px black, -1px -1px 3px black;
+          box-shadow: 1px 1px 3px black, -1px -1px 3px black;
+}
+
+.paginator__link_active {
+  border: 1px solid #232f3e;
+  background: #232f3e;
+  color: #fff;
 }
 
 .crumbs {
@@ -814,8 +826,8 @@ input:focus {
 .inpunts__row {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 206px 1fr;
-  grid-template-columns: 206px 1fr;
+  -ms-grid-columns: 106px minmax(100px, 500px);
+  grid-template-columns: 106px minmax(100px, 500px);
   gap: 30px;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -903,9 +915,9 @@ input:focus {
 }
 
 .orders {
-  width: 933px;
   margin-bottom: 20px;
   min-width: 0;
+  min-width: 850px;
 }
 
 .orders__titles {
@@ -1018,6 +1030,16 @@ input:focus {
 
 .header__enter i {
   font-size: 11px;
+}
+
+.header__enter span {
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.header__enter span:hover {
+  color: #ff3c20;
 }
 
 .header__search {
@@ -1137,6 +1159,16 @@ input:focus {
   display: none;
 }
 
+.menu__link {
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.menu__link:hover {
+  color: #ff3c20;
+}
+
 .icon-menu {
   display: none;
 }
@@ -1169,6 +1201,10 @@ input:focus {
 
 .module-2__title {
   margin-bottom: 10px;
+}
+
+.add-1:not(:last-child) {
+  margin-bottom: 20px;
 }
 
 .order-948__title {
@@ -1719,6 +1755,12 @@ input:focus {
     -webkit-transform: rotate(45deg);
         -ms-transform: rotate(45deg);
             transform: rotate(45deg);
+  }
+}
+
+@media (max-width: 29.99875em) {
+  .inpunts__end label {
+    font-size: 12px;
   }
 }
 

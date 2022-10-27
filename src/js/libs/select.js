@@ -489,7 +489,7 @@ class SelectConstructor {
 	}
 	// Логгинг в консоль
 	setLogging(message) {
-		this.config.logging ? FLS(`[select]: ${message}`) : null;
+		// this.config.logging ? FLS(`[select]: ${message}`) : null;
 	}
 }
 // Запускаем и добавляем в объект модулей

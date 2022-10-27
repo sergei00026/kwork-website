@@ -1,4 +1,7 @@
 .add-1 {
+	&:not(:last-child) {
+		margin-bottom: 20px;
+	}
 	// .add-1__container
 	&__container {
 	}

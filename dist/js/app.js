@@ -3508,11 +3508,6 @@
                 }));
             }));
         }
-        function functions_FLS(message) {
-            setTimeout((() => {
-                if (window.FLS) console.log(message);
-            }), 0);
-        }
         function uniqArray(array) {
             return array.filter((function(item, index, self) {
                 return self.indexOf(item) === index;
@@ -3796,9 +3791,7 @@
                 const focusable = this.previousOpen.element.querySelectorAll(this._focusEl);
                 if (!this.isOpen && this.lastFocusEl) this.lastFocusEl.focus(); else focusable[0].focus();
             }
-            popupLogging(message) {
-                this.options.logging ? functions_FLS(`[Попапос]: ${message}`) : null;
-            }
+            popupLogging(message) {}
         }
         modules_flsModules.popup = new Popup({});
         let formValidate = {
@@ -4176,9 +4169,7 @@
                     }
                 }));
             }
-            setLogging(message) {
-                this.config.logging ? functions_FLS(`[select]: ${message}`) : null;
-            }
+            setLogging(message) {}
         }
         modules_flsModules.select = new SelectConstructor({});
         __webpack_require__(2352);

@@ -25,6 +25,12 @@
 		i {
 			font-size: 11px;
 		}
+		span {
+			transition: all 0.3s ease 0s;
+			&:hover {
+				color: #ff3c20;
+			}
+		}
 	}
 	// .header__middle
 	&__middle {
@@ -133,6 +139,10 @@
 	}
 	// .menu__link
 	&__link {
+		transition: all 0.3s ease 0s;
+		&:hover {
+			color: #ff3c20;
+		}
 	}
 	// .menu__icon
 	&__icon {

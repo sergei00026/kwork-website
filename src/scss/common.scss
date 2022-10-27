@@ -10,7 +10,6 @@ input {
 
 .modules {
 	text-align: center;
-	max-width: 985px;
 	overflow-x: auto;
 	min-width: 0;
 	&:not(:last-child) {
@@ -209,7 +208,6 @@ input {
 	}
 	// .paginator__list
 	&__list {
-		max-width: 966px;
 		display: flex;
 		align-items: center;
 		gap: 10px;
@@ -244,6 +242,15 @@ input {
 		border: 1px solid #000;
 		width: 25px;
 		height: 25px;
+		transition: all 0.3s ease 0s;
+		&:hover {
+			box-shadow: 1px 1px 3px black, -1px -1px 3px black;
+		}
+		&_active {
+			border: 1px solid #232f3e;
+			background: #232f3e;
+			color: #fff;
+		}
 	}
 }
 //===========================
@@ -308,7 +315,7 @@ input {
 	// .inpunts__row
 	&__row {
 		display: grid;
-		grid-template-columns: 206px 1fr;
+		grid-template-columns: 106px minmax(100px, 500px);
 		gap: 30px;
 		align-items: center;
 		margin-bottom: 15px;
@@ -345,6 +352,9 @@ input {
 			align-items: center;
 			gap: 4px;
 			cursor: pointer;
+			@media (max-width: $mobileSmall) {
+				font-size: 12px;
+			}
 			input {
 				cursor: pointer;
 			}
@@ -370,9 +380,9 @@ input {
 }
 //====================================================
 .orders {
-	width: 933px;
 	margin-bottom: 20px;
 	min-width: 0;
+	min-width: 850px;
 	// .orders__titles
 	&__titles {
 		display: grid;
