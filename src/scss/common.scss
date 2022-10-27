@@ -19,7 +19,8 @@ input {
 	// .modules__titles
 	&__titles {
 		display: grid;
-		grid-auto-columns: 123px;
+		grid-auto-columns: minmax(123px, 1fr);
+
 		font-weight: 700;
 		align-items: center;
 		min-width: 0;
@@ -67,7 +68,7 @@ input {
 	// .modules__items
 	&__items {
 		display: grid;
-		grid-auto-columns: 123px;
+		grid-auto-columns: minmax(123px, 1fr);
 		min-width: 0;
 		grid-auto-flow: column;
 		& > * {
@@ -118,7 +119,7 @@ input {
 	// .modules__total
 	&__total {
 		display: grid;
-		grid-auto-columns: 123px;
+		grid-auto-columns: minmax(123px, 1fr);
 		min-width: 0;
 		grid-auto-flow: column;
 		align-items: center;
@@ -364,6 +365,82 @@ input {
 			color: #fff;
 			background-color: #286090;
 			border-color: #204d74;
+		}
+	}
+}
+//====================================================
+.orders {
+	width: 933px;
+	margin-bottom: 20px;
+	min-width: 0;
+	// .orders__titles
+	&__titles {
+		display: grid;
+		grid-auto-columns: 1fr;
+		font-weight: 700;
+		align-items: center;
+		min-width: 0;
+		grid-auto-flow: column;
+		&_left {
+			grid-template-columns: 0.15fr 0.85fr;
+		}
+		& > * {
+			min-width: 0;
+		}
+		& > div {
+			min-height: 40px;
+			padding: 8px;
+			border: solid #ddd;
+			border-width: 1px 1px 1px 0;
+			background-color: rgba(51, 51, 51, 0.1);
+			& > * {
+				min-width: 0;
+			}
+			&:first-child {
+				border: 1px solid #ddd;
+			}
+		}
+		// .orders__titles_inf1
+		&_inf1 {
+		}
+	}
+	// .orders__items
+	&__items {
+		display: grid;
+		grid-auto-columns: 1fr;
+		min-width: 0;
+		grid-auto-flow: column;
+		&_left {
+			grid-template-columns: 0.15fr 0.85fr;
+		}
+		& > * {
+			min-width: 0;
+		}
+		& > div {
+			min-height: 51.5px;
+			padding: 8px;
+			border: solid #ddd;
+			border-width: 0px 1px 1px 0;
+			span {
+				float: right;
+			}
+			& > * {
+				min-width: 0;
+			}
+			&:first-child {
+				border: solid #ddd;
+				border-width: 0px 1px 1px 1px;
+			}
+		}
+		transition: all 0.3s ease 0s;
+		&:hover {
+			background-color: #f5f5f5;
+		}
+		// .orders__items_inf1
+		&_inf1 {
+		}
+		// .orders__items_inf2
+		&_inf2 {
 		}
 	}
 }
