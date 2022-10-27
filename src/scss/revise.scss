@@ -1,0 +1,15 @@
+.module-2 {
+	&:not(:last-child) {
+		margin-bottom: 20px;
+	}
+	// .module-2__container
+	&__container {
+	}
+	// .module-2__title
+	&__title {
+		margin-bottom: 10px;
+	}
+	// .module-2__body
+	&__body {
+	}
+}

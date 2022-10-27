@@ -139,36 +139,11 @@ body {
 // Подключение стилей отдельных страниц
 @import "home";
 @import "movement";
+@import "revise";
+@import "add-order";
+@import "order-information";
 //======================================
-.crumbs {
-	padding-top: 20px;
-	&:not(:last-child) {
-		margin-bottom: 20px;
-	}
-	&__container {
-	}
 
-	&__list {
-		display: flex;
-		align-items: center;
-		column-gap: 7px;
-	}
-	// .crumbs__item
-	&__item {
-		&_home {
-			font-size: 12px;
-		}
-		// .crumbs__item_arrow
-		&_arrow {
-			font-size: 10px;
-		}
-	}
-	// .crumbs__link
-	&__link {
-	}
-}
-
-//======================
 .filter {
 	&:not(:last-child) {
 		margin-bottom: 20px;
