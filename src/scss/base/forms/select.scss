@@ -88,13 +88,16 @@
 		overflow-y: auto;
 		overflow-x: hidden;
 		// Максимальная высота
-		max-height: 200px;
+		max-height: 80px !important;
 		// Стили скроллбара
 		.simplebar-scrollbar {
 			&::before {
-				//opacity: 1;
+				opacity: 1;
 			}
 		}
+	}
+	.simplebar-track.simplebar-vertical .simplebar-scrollbar:before {
+		background: #fff;
 	}
 	// .select__option
 	&__option {

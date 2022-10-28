@@ -303,7 +303,15 @@ h6 {
 .select__scroll {
   overflow-y: auto;
   overflow-x: hidden;
-  max-height: 200px;
+  max-height: 80px !important;
+}
+
+.select__scroll .simplebar-scrollbar::before {
+  opacity: 1;
+}
+
+.select .simplebar-track.simplebar-vertical .simplebar-scrollbar:before {
+  background: #fff;
 }
 
 .select__option {
